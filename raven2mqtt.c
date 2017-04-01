@@ -268,7 +268,7 @@ int ParseRavenXML(char* buffer)
 	  p = strtok( NULL, "<>\n" );
 	}
       demand_result = (double) demand * (double) multiplier / (double) divisor;
-      sprintf( gMQTTPayload,"<timestamp>%d</timestamp><macid>%s</macid><demand>%09.3f</demand>", timestamp, macid, demand_result );
+      sprintf( gMQTTPayload,"{\"demand\":{\"timestamp\":%d,\"value\":%09.3f}}", timestamp, demand_result );
       sprintf( gMQTTTopic, "home/%s/demand", macid ); 
       return 1;
     }
